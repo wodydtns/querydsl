@@ -108,7 +108,7 @@ public class QuerydslBasicTest2 {
 		assertThat(result).extracting("username").containsExactly("teamA","teamB");
 	}
 	/*
-	 * 회원과 팀을 조인하면서, 팀 이림이 teamA인 팀만 조인, 회원은 모두 조회
+	 * 회원과 팀을 조인하면서, 팀 이름이 teamA인 팀만 조인, 회원은 모두 조회
 	 * */
 	@Test
 	public void joinOnFiltering() {
