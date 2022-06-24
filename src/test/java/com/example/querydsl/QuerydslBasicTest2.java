@@ -1,6 +1,8 @@
 package com.example.querydsl;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -132,4 +134,30 @@ public class QuerydslBasicTest2 {
 		
 		assertThat(result).extracting("username").containsExactly("teamA","teamB");
 	}
+	
+	@PersistenceUnit
+	EntityManagerFactory emf;
+	
+	@Test
+	public void fetchJoinNo() {
+		em.flush();
+		em.clear();
+		
+		Member findMember = queryFactory.selectFrom(member).where(member.username.eq("member1")).fetchOne();
+		
+		boolean loaded = emf.getPersistenceUnitUtil().isLoaded(findMember.getTeam());
+		assertThat(loaded).as("페치 조인 미적용").isFalse();
+	}
+	
+	@Test
+	public void fetchJoinUse() {
+		em.flush();
+		em.clear();
+		
+		Member findMember = queryFactory.selectFrom(member).join(member.team,team).fetchJoin().where(member.username.eq("member1")).fetchOne();
+		
+		boolean loaded = emf.getPersistenceUnitUtil().isLoaded(findMember.getTeam());
+		assertThat(loaded).as("페치 조인 미적용").isTrue();
+	}
+	
 }
