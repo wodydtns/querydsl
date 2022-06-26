@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import com.example.querydsl.dto.MemberDto;
+import com.example.querydsl.dto.QMemberDto;
 import com.example.querydsl.dto.UserDto;
 import com.example.querydsl.entity.Member;
 import com.example.querydsl.entity.QMember;
@@ -138,4 +139,27 @@ public class QuerydslBasicTest4 {
 			System.out.println("memberDto :" + memberDto);
 		}
 	}
+	
+	/*
+	 * constructor 의 문제 -> 실제 실행 전(컴파일 전)까지 실행 오류를 알 수 없음
+	 * Projection을 사용하면 -> 컴파일 오류로 오류 방지 가능
+	 * 단점1 : Q파일 생성 및 @QueryProjection 필수
+	 * 단점2 : @QueryProjection에 영향을 받는 의존성 발생 
+	 * */
+	@Test
+	public void findBtoByQueryProjection() {
+		List<MemberDto> result =queryFactory.select(new QMemberDto(member.username,member.age)).from(member).fetch();
+		
+		for (MemberDto memberDto : result) {
+			System.out.println(memberDto);
+		}
+	}
+	@Test
+	public void distinct() {
+		List<String> result = queryFactory.select(member.username).distinct().from(member).fetch();
+		for (String s : result) {
+			System.out.println(s);
+		}
+	}
+	
 }

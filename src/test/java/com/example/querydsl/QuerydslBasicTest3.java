@@ -147,6 +147,8 @@ public class QuerydslBasicTest3 {
 		for (String s : result) {
 			System.out.println("s = " + s);
 		}
+		
 	}
+	
 }
 	
