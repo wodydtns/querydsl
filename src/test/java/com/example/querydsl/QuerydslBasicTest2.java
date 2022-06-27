@@ -71,6 +71,7 @@ public class QuerydslBasicTest2 {
 	/*
 	 * 팀의 이름과 각 팀의 평균 연령 구하기
 	 * */
+	/*
 	@Test
 	public void groupBy() {
 		List<Tuple> result = queryFactory.select(QTeam.team.name,member.age.avg()).from(member).join(member.team, team).groupBy(team.name).fetch();
@@ -84,7 +85,7 @@ public class QuerydslBasicTest2 {
 		assertThat(teamB.get(team.name)).isEqualTo("teamB");
 		assertThat(teamB.get(member.age.avg())).isEqualTo(35);
 	}
-	
+	*/
 	@Test
 	public void Join() {
 		//inner join

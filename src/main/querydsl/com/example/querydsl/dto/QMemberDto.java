@@ -1,6 +1,9 @@
 package com.example.querydsl.dto;
 
-import com.querydsl.core.annotations.Generated;
+import com.querydsl.core.types.dsl.*;
+
+import javax.annotation.Generated;
+
 import com.querydsl.core.types.ConstructorExpression;
 
 /**

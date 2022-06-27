@@ -39,7 +39,7 @@ import java.util.List;
 
 @SpringBootTest
 @Transactional
-public class QuerydslBasicTest6 {
+public class QuerydslBasicTest7 {
 
 	@Autowired
 	EntityManager em;
