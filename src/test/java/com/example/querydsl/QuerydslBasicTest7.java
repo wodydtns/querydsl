@@ -1,8 +1,6 @@
 package com.example.querydsl;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.PersistenceUnit;
 import javax.transaction.Transactional;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -10,30 +8,11 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import com.example.querydsl.dto.MemberDto;
-import com.example.querydsl.dto.MemberSearchCondition;
-import com.example.querydsl.dto.MemberTeamDto;
-import com.example.querydsl.dto.QMemberDto;
-import com.example.querydsl.dto.UserDto;
 import com.example.querydsl.entity.Member;
-import com.example.querydsl.entity.QMember;
-import com.example.querydsl.entity.QTeam;
 import com.example.querydsl.entity.Team;
-import com.example.querydsl.repository.MemberJpaRepository.*;
-import com.querydsl.core.BooleanBuilder;
-import com.querydsl.core.Tuple;
-import com.querydsl.core.types.Expression;
-import com.querydsl.core.types.ExpressionUtils;
-import com.querydsl.core.types.Predicate;
-import com.querydsl.core.types.Projections;
-import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.core.types.dsl.Expressions;
-import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.example.querydsl.entity.QMember.*;
-import static com.example.querydsl.entity.QTeam.*;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 

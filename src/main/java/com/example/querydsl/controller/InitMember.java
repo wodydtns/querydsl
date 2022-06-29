@@ -17,7 +17,6 @@ import lombok.RequiredArgsConstructor;
 @Component
 @RequiredArgsConstructor
 public class InitMember {
-	
 	private final InitMemberService initMemberService;
 
 	@PostConstruct
